@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Star Sports Massage Center</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #d7d2cc 0%, #304352 100%);
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(to right, #434343 0%, black 100%);
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin: 0 10px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #ffc107;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+border: 2px inset rgba(129, 129, 129, 0.8);
+border-radius: 7px;
+
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 15px 19px 22px rgba(0, 0, 0, 0.4);
+        }
+
+        .services {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .service {
+            flex: 0 0 calc(50% - 20px);
+            margin-bottom: 20px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+border: 1px outset #000000;
+border-radius: 11px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .service:hover {
+            transform: translateY(-5px);
+        }
+
+        .service h3 {
+            margin-bottom: 10px;
+        }
+
+        .service img {
+            width: 100%;
+            height: 200px; /* Set a fixed height for all images */
+            object-fit: cover; /* Cover to ensure images fill the space */
+            border-radius: 5px;
+        }
+
+        .contact-info {
+            margin-top: 20px;
+        }
+
+        .contact-info p {
+            margin: 5px 0;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #555;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.15) 100%), radial-gradient(at top center, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.40) 120%) #989898;
+            color: #000; /* Change text color to black */
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        @media (max-width: 768px) {
+            .service {
+                flex: 0 0 100%;
+            }
+        }
+
+/* Form */
+        form {
+            margin-top: 20px;
+        }
+
+        form label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        form input,
+        form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        form input[type="submit"] {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        form input[type="submit"]:hover {
+            background-color: #555;
+        }
+
+
+        /* Slideshow */
+        .slideshow {
+    max-width: 100%;
+    max-height: 500px; /* Increase the max-height as needed */
+border: 4px ridge #818181;
+border-radius: 7px;
+    overflow: hidden;
+    position: relative;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+
+        .slides {
+            display: none;
+            width: 100%;
+        }
+
+        .slides img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Fade animation */
+        .fade {
+            -webkit-animation-name: fade;
+            -webkit-animation-duration: 2s;
+            animation-name: fade;
+            animation-duration: 2s;
+        }
+
+        @-webkit-keyframes fade {
+            from {opacity: .4}
+            to {opacity: 1}
+        }
+
+        @keyframes fade {
+            from {opacity: .4}
+            to {opacity: 1}
+        }
+
+        /* Navigation dots */
+        .dot-container {
+            text-align: center;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .dot {
+            height: 15px;
+            width: 15px;
+            margin: 0 2px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.6s ease;
+            cursor: pointer;
+        }
+
+        .dot.active {
+            background-color: #717171;
+        }
+
+/* For small screens (up to 768px wide) */
+@media screen and (max-width: 768px) {
+    /* Adjust the navigation layout for smaller screens */
+    nav ul {
+        flex-direction: column; /* Stack navigation items vertically */
+    }
+
+    /* Adjust the width of the service items for smaller screens */
+    .service {
+        flex: 0 0 100%; /* Take up full width */
+    }
+
+    /* Adjust other styles as needed */
+}
+
+/* For larger screens (greater than 768px wide) */
+@media screen and (min-width: 769px) {
+    /* Reset any styles that were changed for small screens */
+    nav ul {
+        flex-direction: row; /* Display navigation items horizontally */
+    }
+
+    /* Reset other styles as needed */
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <h1>Star Sports Massage Center</h1>
+            <ul>
+                <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
+                <!-- Font Awesome icon for Home -->
+                <li><a href="#about"><i class="fas fa-info-circle"></i> About Us</a></li>
+                <!-- Font Awesome icon for About Us -->
+                <li><a href="#services"><i class="fas fa-concierge-bell"></i> Services</a></li>
+                <!-- Font Awesome icon for Services -->
+                <li><a href="#gallery"><i class="fas fa-images"></i> Gallery</a></li>
+                <!-- Font Awesome icon for Gallery -->
+                <li><a href="#contact"><i class="fas fa-phone"></i> Contact Us</a></li>
+                <!-- Font Awesome icon for Contact Us -->
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Slideshow -->
+   <div class="slideshow">
+        <div class="slides fade">
+            <img src="./Assests/images/About4.jpg" alt="About Us Image">
+        </div>
+
+        <div class="slides fade">
+            <img src="./Assests/images/full body massage.jpg" alt="Full Body Massage Image">
+        </div>
+
+        <div class="slides fade">
+            <img src="./Assests/images/Deep Tissue Massage.jpg" alt="Deep Tissue Massage Image">
+        </div>
+
+<div class="slides fade">
+            <img src="./Assests/images/About2.jpg" alt="About Us Image">
+        </div>
+
+        <div class="slides fade">
+            <img src="./Assests/images/Foot Reflexology.jpeg" alt="Foot Reflexology Image">
+        </div>
+
+<div class="slides fade">
+            <img src="./Assests/images/About3.jpg" alt="About Us Image">
+        </div>
+
+        <div class="slides fade">
+            <img src="./Assests/images/Massage for Paralysis Patients.jpg" alt="Massage for Paralysis Patients Image">
+        </div>
+
+        <!-- Navigation dots -->
+         <div class="dot-container" style="text-align:center">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+    </div>
+
+    <div id="home" class="container">
+      <div id="about" class="container">
+            <h2>About Us</h2>
+            <p>
+                At Star Sports Massage Center, we are dedicated to providing exceptional massage services tailored to your needs. Our experienced therapists are committed to helping you achieve relaxation, alleviate stress, and promote overall wellness.
+            </p>
+        </div>
+        <h2>Our Services</h2>
+        <div id="services" class="services">
+            <div class="service" onclick="showBookingForm('Full Body Massage')">
+                <h3>Full Body Massage</h3>
+                <p>Experience a soothing full-body massage that rejuvenates your mind and body.</p>
+                <img src="./Assests/images/full body massage.jpg" alt="Full Body Massage Image">
+            </div>
+            <div class="service" onclick="showBookingForm('Deep Tissue Massage')">
+                <h3>Deep Tissue Massage</h3>
+                <p>Targeting deep muscle layers, our deep tissue massage provides relief from chronic pain and tension.</p>
+                <img src="./Assests/images/Deep Tissue Massage.jpg" alt="Deep Tissue Massage Image">
+            </div>
+            <div class="service" onclick="showBookingForm('Foot Reflexology')">
+                <h3>Foot Reflexology</h3>
+                <p>Enjoy the ancient healing art of foot reflexology, promoting balance and relaxation.</p>
+                <img src="./Assests/images/Foot Reflexology.jpeg" alt="Foot Reflexology Image">
+            </div>
+            <div class="service" onclick="showBookingForm('Massage for Paralysis Patients')">
+                <h3>Massage for Paralysis Patients</h3>
+                <p>Gentle and therapeutic massages designed to improve comfort and enhance quality of life for individuals with paralysis.</p>
+                <img src="./Assests/images/Massage for Paralysis Patients.jpg" alt="Massage for Paralysis Patients Image">
+            </div>
+        </div>
+    </div>
+
+  <div id="contact" class="container">
+    <h2>Contact Us</h2>
+    <p><i class="fas fa-phone icon"></i> Phone: <a href="tel:9441230736">9441230736</a></p>
+    <p><i class="fab fa-whatsapp icon"></i> WhatsApp: <a href="https://wa.me/yourwhatsappnumber">Message us</a></p>
+    <p><i class="far fa-envelope icon"></i> Email: <a href="mailto:galisa9441230736@gmail.com">galisa9441230736@gmail.com</a></p>
+    <p><i class="fas fa-map-marker-alt icon"></i> Address: <a href="https://maps.google.com">H.No 9-4-62/20, Nizam colony, Road #4, Street# 2. Near Nizam colony Masjid, Beside life prime clinics</a></p>
+    <a href="#booking-form" class="btn">Book Massage</a>
+</div>
+
+<!-- Booking Form -->
+<div id="booking-form" class="container">
+    <h2>Book Massage</h2>
+    <form onsubmit="return validateForm()">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" name="phone" required pattern="[0-9]{10}">
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email">
+
+        <label for="message">Message:</label>
+        <textarea id="message" name="message"></textarea>
+
+        <input type="submit" value="Submit">
+    </form>
+</div>
+
+    <footer>
+        <p>
+            <img src="./Assests/images/Main-logo.jpg" alt="Store Logo" height="50"> <br>
+            <a href="#">Privacy Policy</a> | <a href="#">Terms & Conditions</a><br>
+            H.No 9-4-62/20, Nizam colony, Road #4, Street# 2. Near Nizam colony Masjid, Beside life prime clinics Phone 9441230736 | Email galisa9441230736@gmail.com <br>
+            © Star Sports Massage Center. All Rights Reserved 2024<br>
+            Website Is Built And Designed By G.Thangella
+        </p>
+    </footer>
+
+    <script>
+function showBookingForm() {
+        // Scroll to the booking section
+        document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+    }
+
+
+    // JavaScript for slideshow
+var slideIndex = 0;
+showSlides();
+
+function showSlides() {
+    var i;
+    var slides = document.getElementsByClassName("slides");
+    var dots = document.getElementsByClassName("dot");
+    
+    // Hide all slides
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+    
+    // Reset slideIndex if it exceeds the number of slides
+    if (slideIndex >= slides.length) {
+        slideIndex = 0;
+    }
+    
+    // Hide all dots
+    for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+    }
+    
+    // Display the current slide
+    slides[slideIndex].style.display = "block";
+    dots[slideIndex].className += " active";
+    
+    // Move to the next slide
+    slideIndex++;
+    
+    // Call showSlides again after 3 seconds
+    setTimeout(showSlides, 3000);
+}
+
+function validateForm() {
+    var name = document.getElementById("name").value;
+    var phone = document.getElementById("phone").value;
+    var email = document.getElementById("email").value;
+    var message = document.getElementById("message").value;
+
+    // Construct the email body with proper formatting
+    var body = "Name: " + name + "\n" +
+               "Phone Number: " + phone + "\n" +
+               "Email: " + email + "\n" +
+               "Message: " + message;
+
+    var mailtoLink = "mailto:galisa9441230736@gmail.com" +
+                     "?subject=New Booking Request" +
+                     "&body=" + encodeURIComponent(body);
+
+    window.location.href = mailtoLink;
+
+    return false; // Prevent form submission
+}
+</script>
+
+</body>
+</html>
